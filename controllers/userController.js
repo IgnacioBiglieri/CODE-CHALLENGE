@@ -27,37 +27,3 @@ module.exports = {
         })
 	},
 }
-
-
-/* register:(req, res) => {
-db.Users.findAll().then((user) => {
-	let usuarioEnDB = user.find((i) => i.email == req.body.email);
-	if (usuarioEnDB) {
-		return res.render('register', {
-			errors: {
-				email: {
-					msg: 'Este email ya está registrado',
-				},
-			},
-			oldData: req.body,
-		})
-	} else {
-		category = "User";
-		db.Users.create({
-			nombre: req.body.nombre,
-			apellido: req.body.apellido,
-			dni: req.boody.dni,
-			telefono: req.body.telefono,
-			email: req.body.email,
-			domicilio: req.body.domicilio,
-			category: "User",
-		})
-		.then(() => {
-			return res.redirect('/users/register')
-		})
-			.catch((error) => {
-			console.log(error);
-		})
-	}
-})
-} */

@@ -1,20 +1,11 @@
 import React from 'react';
 
 function Login() {
-    return (
-        <form>
-
-            <label for="email">E-mail</label>
-            <input type="email" name="email" />
-
-            <label for="dni">DNI</label>
-            <input type="number" name="dni" />
-
-        </form>
-    );
+    return(
+        <div>
+            <h2>Hola soy el Login</h2>
+        </div>
+    )
 }
 
-
-
-
-export default Login;
+export default Login
