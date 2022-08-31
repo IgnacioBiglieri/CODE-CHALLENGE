@@ -1,9 +1,19 @@
 const db = require('../database/models');
 const sequelize = db.sequelize;
+const { validationResult } = require("express-validator");
 
 module.exports = {
 		login(req, res){
-			let admin = db.Admins.findAll({
+
+			let errors = validationResult(req);
+	    if (!errors.isEmpty()) {
+	      return res.json({
+	        data: errors.errors,
+	        status: 300
+	      });
+	    }
+		
+			let admin = db.Users.findAll({
 				where: { email: req.body.email }
 			})
 			.then((admin)=>{

@@ -1,10 +1,12 @@
-var express = require('express');
-const app = express();
-var router = express.Router();
-var adminController = require('../controllers/adminController')
+const express = require('express');
+const router = express.Router();
+const adminController = require('../controllers/adminController');
+const loginMiddleware = require('../middlewares/loginMiddleware');
+const adminMiddleware = require('../middlewares/adminMiddleware');
 
 
-// Página de login
-router.get('/login', adminController.login);
+// Login de admins
+
+router.post('/login', loginMiddleware, adminMiddleware, adminController.login);
 
 module.exports = router;

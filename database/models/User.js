@@ -19,12 +19,15 @@ module.exports = (sequelize, DataTypes) => {
             unique: true
         },
         telefono: {
-            type: DataTypes.INTEGER(11)
+            type: DataTypes.BIGINT(20)
         },
         email: {
             type: DataTypes.STRING(100)
         },
         domicilio: {
+            type: DataTypes.STRING(100)
+        },
+        categoria: {
             type: DataTypes.STRING(100)
         }
     };
