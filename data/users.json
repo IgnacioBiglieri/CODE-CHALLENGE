@@ -1,0 +1,81 @@
+[{
+    "id": 1,
+    "nombre": "Sylvia",
+    "apellido": "Knocker",
+    "dni": 1,
+    "telefono": "+55-861-395-4654",
+    "email": "sknocker0@irs.gov",
+    "direccion": "31 Eagle Crest Park"
+  }, {
+    "id": 2,
+    "nombre": "Orville",
+    "apellido": "Kamenar",
+    "dni": 2,
+    "telefono": "+54-884-468-3445",
+    "email": "okamenar1@php.net",
+    "direccion": "67480 Declaration Hill"
+  }, {
+    "id": 3,
+    "nombre": "Adham",
+    "apellido": "Messruther",
+    "dni": 3,
+    "telefono": "+86-754-632-2185",
+    "email": "amessruther2@hexun.com",
+    "direccion": "583 Scott Way"
+  }, {
+    "id": 4,
+    "nombre": "Melvyn",
+    "apellido": "Witling",
+    "dni": 4,
+    "telefono": "+46-686-151-8613",
+    "email": "mwitling3@ft.com",
+    "direccion": "2197 Blackbird Center"
+  }, {
+    "id": 5,
+    "nombre": "Larina",
+    "apellido": "Radbone",
+    "dni": 5,
+    "telefono": "+251-376-955-5413",
+    "email": "lradbone4@reverbnation.com",
+    "direccion": "04 Thompson Center"
+  }, {
+    "id": 6,
+    "nombre": "Rafaellle",
+    "apellido": "Bernardeau",
+    "dni": 6,
+    "telefono": "+1-512-399-5697",
+    "email": "rbernardeau5@hud.gov",
+    "direccion": "360 Leroy Junction"
+  }, {
+    "id": 7,
+    "nombre": "Quintin",
+    "apellido": "D'Elias",
+    "dni": 7,
+    "telefono": "+7-795-921-7337",
+    "email": "qdelias6@blogspot.com",
+    "direccion": "1206 Mariners Cove Court"
+  }, {
+    "id": 8,
+    "nombre": "Peyter",
+    "apellido": "Willeman",
+    "dni": 8,
+    "telefono": "+967-937-241-6480",
+    "email": "pwilleman7@yellowbook.com",
+    "direccion": "06051 Mendota Way"
+  }, {
+    "id": 9,
+    "nombre": "Fayth",
+    "apellido": "Mulbry",
+    "dni": 9,
+    "telefono": "+86-443-518-6399",
+    "email": "fmulbry8@dailymotion.com",
+    "direccion": "7040 Pawling Center"
+  }, {
+    "id": 10,
+    "nombre": "Davita",
+    "apellido": "Caze",
+    "dni": 10,
+    "telefono": "+86-568-919-0882",
+    "email": "dcaze9@devhub.com",
+    "direccion": "4 1st Pass"
+  }]

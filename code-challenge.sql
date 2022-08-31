@@ -24,8 +24,6 @@ DROP TABLE IF EXISTS `admins`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `admins` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `email` varchar(100) NOT NULL,
-  `password` varchar(100) NOT NULL,
   `user_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `admins_FK` FOREIGN KEY (`id`) REFERENCES `users` (`id`)
@@ -53,11 +51,11 @@ CREATE TABLE `users` (
   `nombre` varchar(100) NOT NULL,
   `apellido` varchar(100) NOT NULL,
   `dni` int(11) NOT NULL,
-  `telefono` int(11) NOT NULL,
+  `telefono` bigint(20) NOT NULL,
   `email` varchar(100) NOT NULL,
   `domicilio` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -66,6 +64,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,'Ignacio','Biglieri',42780000,3364654100,'nachobiglieri@gmail.com','san lorenzo 127');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -82,4 +81,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-08-30 17:47:23
+-- Dump completed on 2022-08-30 20:39:20
