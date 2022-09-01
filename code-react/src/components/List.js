@@ -21,13 +21,30 @@ class List extends Component {
         })
     }
 
+    
+
     render(){
+
+        // SUPONGO QUE ES ASI
+        
+        /* let [users, setUsers] = useState([]);
+
+        let getUsers = async () => {
+            await fetch('http://localhost:3020/api/users')
+              .then((response) => response.json())
+              .then((data) => setUsers(data))
+          }
+
+          useEffect(() => {
+            getUsers()
+          }, [])   */
+
         return(
-            <div>
+            <div className='tabla'>
                 <h2>Listado de usuarios</h2>
-                <table>
-                    <thead>
-                        <tr>
+                <table className='list'>
+                    <thead className='datos'>
+                        <tr className='datosUsers'>
                             <th>Nombre</th>
                             <th>Apellido</th>
                             <th>DNI</th>

@@ -1,5 +1,4 @@
 import React from 'react';
-import './RowUser.css';
 
 function RowUser(userData){
     return(
