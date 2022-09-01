@@ -1,21 +1,20 @@
-import logo from './logo.svg';
-
 import Login from './components/Login';
 import Register from './components/Register';
 import List from './components/List';
 
 
-import { Link, Route } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 
 
 function App() {
   return (
     <div className="App">
-      <Route path="/" exact component={Login} />
-      <Route path="/register" component={Register} />
-      <Route path="/list" component={List} />
-      
+      <Routes>
+        <Route path="/" exact element={<Register />}/>
+        <Route path="/login" element={<Login />}/>
+        <Route path="/list" element={<List />}/>
+      </Routes>
     </div>
   );
 }

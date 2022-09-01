@@ -1,10 +1,17 @@
 import React from 'react';
+import './List.css';
+
 
 function List() {
     return(
         <div>
-            <h2>Hola soy la lista</h2>
+            <h5>Persona</h5>
+            <h5>Persona</h5>
+            <h5>Persona</h5>
+            <h5>Persona</h5>
+            <h5>Persona</h5>
         </div>
+
     )
 }
 
