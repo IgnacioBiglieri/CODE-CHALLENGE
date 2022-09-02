@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './List.css';
-import RowUser from './RowUser';
+import RowUser from './RowUser'
 
 class List extends Component {
     constructor() {
@@ -10,7 +10,12 @@ class List extends Component {
         }
     }
     componentDidMount(){
-        fetch("/users/list")
+        fetch("http://localhost:8000/users/list",{
+            method: 'GET',
+            headers:{
+              'Content-Type': 'application/json',
+            }
+        })
         .then((respuesta) => {
             return respuesta.json();
         })
@@ -21,36 +26,19 @@ class List extends Component {
         })
     }
 
-    
-
     render(){
-
-        // SUPONGO QUE ES ASI
-        
-        /* let [users, setUsers] = useState([]);
-
-        let getUsers = async () => {
-            await fetch('http://localhost:3020/api/users')
-              .then((response) => response.json())
-              .then((data) => setUsers(data))
-          }
-
-          useEffect(() => {
-            getUsers()
-          }, [])   */
-
         return(
             <div className='tabla'>
                 <h2>Listado de usuarios</h2>
                 <table className='list'>
-                    <thead className='datos'>
-                        <tr className='datosUsers'>
-                            <th>Nombre</th>
-                            <th>Apellido</th>
-                            <th>DNI</th>
-                            <th>Telefono</th>
-                            <th>Email</th>
-                            <th>Direccion</th>
+                    <thead className='headDatos'>
+                        <tr className='tablaDatos'>
+                            <th className='datosUsers'>Nombre</th>
+                            <th className='datosUsers'>Apellido</th>
+                            <th className='datosUsers'>DNI</th>
+                            <th className='datosUsers'>Telefono</th>
+                            <th className='datosUsers'>Email</th>
+                            <th className='datosUsers'>Direccion</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -62,7 +50,8 @@ class List extends Component {
                                     dni={user.dni}
                                     telefono={user.telefono}
                                     email={user.email}
-                                    direccion={user.direccion}
+                                    domicilio={user.domicilio}
+                                    key={`usuario${user.id}`}
                                     />
                             }
                         )}

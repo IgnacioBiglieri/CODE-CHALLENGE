@@ -1,0 +1,25 @@
+.data {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+}
+
+
+.headList {
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+.users {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        width: 210px;
+        padding: 20px;
+        margin: 5px;
+        border: 1px solid #000;
+        border-radius: 5px;
+        font-size: small;
+    }
