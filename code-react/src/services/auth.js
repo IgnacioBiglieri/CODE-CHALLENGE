@@ -4,18 +4,19 @@ const process = async (link,data,token) => {
         token='0'
     }
     let body = {
-        method: 'POST',
-        headers:{
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
-        }
-    }
-    if (data!=='')
-    {
-        body={...body,body: JSON.stringify(data)}
-    }
-    return await fetch(`http://127.0.0.1:8000/admins/login`, {...body}).then(res => res.json())
-      .catch(error => console.error('Error:', error))
+        method: "POST",
+        headers: {
+          "Content-Type": "text/javascript",
+          Authorization: `Bearer ${token}`,
+        },
+        mode: "cors",
+      };
+      if (data !== "") {
+        body = { ...body, body: JSON.stringify(data) };
+      }
+      return await fetch(`http://127.0.0.1:8000/admins/login`, { ...body })
+        .then(res => res.json())
+        .catch(error => console.error("Error:", error));
 }
 
 module.exports = {

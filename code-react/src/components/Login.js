@@ -13,10 +13,10 @@ function Login() {
         console.log(dni);
         e.preventDefault();
         try {
-          await loginProcess(email, dni).then(
-            () => {
+          await loginProcess({email, dni})
+          .then(() => {
               navigate("/list");
-              /* window.location.reload(); */
+              window.location.reload();
             },
             (error) => {
               console.log(error);
@@ -25,12 +25,12 @@ function Login() {
         } catch (err) {
           console.log(err);
         }
-        fetch("http://localhost:8000/admins/login", {
+        /* fetch("http://localhost:8000/admins/login", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-        })
+        }) */
       };
 
 
@@ -66,7 +66,7 @@ function Login() {
                         />
                     </div>
                     <div>
-                        <button type="submit" 
+                        <button type="submit" onSubmit={handleLogin}
                             >Ingresar</button>
                     </div>
                 </form>
