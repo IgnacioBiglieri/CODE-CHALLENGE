@@ -1,8 +1,10 @@
+const { Op } = require('sequelize');
 const db = require('../database/models');
 const sequelize = db.sequelize;
 
 module.exports = {
 	register:(req, res) => {
+		console.log('body', req.body);
 		let crearUsuario = db.Users.create(req.body).then((usuario)=>{
 			return usuario;
 		});
@@ -15,7 +17,11 @@ module.exports = {
 		})
 	},
 	list:(req, res) => {
-		let usuarios = db.Users.findAll().then((usuarios)=>{
+		let usuarios = db.Users.findAll({where: {
+			categoria: {
+				[Op.ne]:'Admin'}
+			}
+		}).then((usuarios)=>{
 			return usuarios;
 		});
 

@@ -11,50 +11,35 @@ function Register() {
 
   function handleForm(e) {
     e.preventDefault()
-    console.log(e);
-  }
+    console.log(name);
+    console.log(lastName);
+    console.log(dni);
+    console.log(phone);
+    console.log(email);
+    console.log(address);
+
+    
+    fetch("http://localhost:8000/users/register",{
+            method: 'POST',
+            headers:{
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({nombre: name, apellido: lastName, dni, telefono: phone, email, domicilio: address, categoria: 'User'}),
+        })
+
+      }
 
   const [name, setName]  = useState(undefined)
 
-  function handleNameChange(e) {
-    console.log(e.target.value);
-    setName(e.target.value)
-  }
-
   const [lastName, setLastName] = useState(undefined)
-
-  function handleLastNameChange(e) {
-    console.log(e.target.value);
-    setLastName(e.target.value)
-  }
 
   const [dni, setDni] = useState(undefined)
 
-  function handleDniChange(e) {
-    console.log(e.target.value);
-    setDni(e.target.value)
-  }
-
   const [phone, setPhone] = useState(undefined)
-
-  function handlePhoneChange(e) {
-    console.log(e.target.value);
-    setPhone(e.target.value)
-  }
 
   const [email, setEmail] = useState(undefined)
 
-  function handleEmailChange(e) {
-    console.log(e.target.value);
-    setEmail(e.target.value)
-  }
-
   const [address, setAddress] = useState(undefined)
-
-  function handleAddressChange(e) {
-    console.log(e.target.value);
-    setAddress(e.target.value)
-  }
 
   return (
 
@@ -70,8 +55,8 @@ function Register() {
               id="name"
               placeholder="Nombre"
               required="required"
-              onChange={handleNameChange}
-            ></input>
+              onChange={(e) => setName(e.target.value)}
+            />
           </div>
 
           <div>
@@ -81,8 +66,8 @@ function Register() {
               id="lastName"
               placeholder="Apellido"
               required="required"
-              onChange={handleLastNameChange}
-            ></input>
+              onChange={(e) => setLastName(e.target.value)}
+            />
           </div>
 
           <div>
@@ -92,8 +77,8 @@ function Register() {
               id="dni"
               placeholder="DNI"
               required="required"
-              onChange={handleDniChange}
-            ></input>
+              onChange={(e) => setDni(e.target.value)}
+            />
           </div>
 
           <div>
@@ -103,8 +88,8 @@ function Register() {
               id="phone"
               placeholder="Teléfono"
               required="required"
-              onChange={handlePhoneChange}
-            ></input>
+              onChange={(e) => setPhone(e.target.value)}
+            />
           </div>
 
           <div>
@@ -114,8 +99,8 @@ function Register() {
               id="email"
               placeholder="E-mail"
               required="required"
-              onChange={handleEmailChange}
-            ></input>
+              onChange={(e) => setEmail(e.target.value)}
+            />
           </div>
 
           <div>
@@ -125,8 +110,8 @@ function Register() {
               id="address"
               placeholder="Dirección"
               required="required"
-              onChange={handleAddressChange}
-            ></input>
+              onChange={(e) => setAddress(e.target.value)}
+            />
           </div>
 
           <div>
@@ -138,4 +123,4 @@ function Register() {
   );
 }
 
-export default Register;
+export default Register

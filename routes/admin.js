@@ -6,6 +6,6 @@ const loginMiddleware = require('../middlewares/loginMiddleware');
 
 // Login de admins
 
-router.get('/login', loginMiddleware, adminController.login);
+router.post('/login', loginMiddleware, adminController.login);
 
 module.exports = router;

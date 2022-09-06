@@ -1,32 +1,36 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { listProcess } from '../services/auth';
 import './List.css';
 import RowUser from './RowUser'
 
-class List extends Component {
-    constructor() {
-        super();
-        this.state = {
-            users: [],
+function List() {
+    const [users, adminUsers] = useState([]);
+    let params = useParams();
+    const navigate = useNavigate();
+
+    const registers = async () => {
+        let data = await listProcess(window.sessionStorage.getItem('token'));
+        if (data.status === 200) {
+
+            adminUsers(data.data);
+            return true;
+        } else {
+            window.sessionStorage.clear();
+            return false
         }
     }
-    componentDidMount(){
-        fetch("http://localhost:8000/users/list",{
-            method: 'GET',
-            headers:{
-              'Content-Type': 'application/json',
-            }
-        })
-        .then((respuesta) => {
-            return respuesta.json();
-        })
-        .then((response) => {
-            this.setState({
-                users : response.data
-            });
-        })
-    }
 
-    render(){
+    useEffect(() => {
+        if (!window.sessionStorage.getItem('nombre')) {
+            navigate('/login');
+        }else {
+
+        } 
+    })
+    
+
+    
         return(
             <div className='tabla'>
                 <h2>Listado de usuarios</h2>
@@ -43,6 +47,7 @@ class List extends Component {
                     </thead>
                     <tbody>
                         {
+                        /* {
                             this.state.users.map(user => { 
                                 return <RowUser 
                                     nombre={user.nombre}
@@ -54,12 +59,25 @@ class List extends Component {
                                     key={`usuario${user.id}`}
                                     />
                             }
-                        )}
+                        )} */
+
+                        users.map(user => {
+                            return <RowUser 
+                                    nombre={user.nombre}
+                                    apellido={user.apellido}
+                                    dni={user.dni}
+                                    telefono={user.telefono}
+                                    email={user.email}
+                                    domicilio={user.domicilio}
+                                    key={`usuario${user.id}`}
+                                    />
+                        })
+
+                        }
                     </tbody>
                 </table>
             </div>
-        )
-    }
+        );
 }
 
 export default List
