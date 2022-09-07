@@ -8,30 +8,30 @@ import './Login.css';
 
 function Login() {
 
+    const navigate = useNavigate()
+
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
-          await loginProcess({email, dni})
-          .then((respuesta) => {
+            const respuesta = await loginProcess({email, dni})
+          
                 if(respuesta.data.status === 200){
-                    window.sessionStorage.setItem("token", respuesta.data.token);
-                    window.sessionStorage.setItem("name", respuesta.data.name);
+                    localStorage.setItem("token", respuesta.data.token);
+                    localStorage.setItem("name", respuesta.data.name);
+                    console.log(navigate);
                     navigate("/list");
                 } else {
-                    console.log(respuesta.data.error);
-                }
-            },
-            (error) => {
-                console.log(error);
+                    console.log('error')
+                    } 
             }
-          );
-        } catch (err) {
+
+        catch (err) {
           console.log(err);
         }
       };
 
 
-    const navigate = useNavigate()
+   
 
     const [email, setEmail] = useState(undefined)
 

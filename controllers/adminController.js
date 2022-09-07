@@ -1,11 +1,13 @@
-const token = require('../jwt/config');
+const jwt = require('../jwt/config');
 const db = require('../database/models');
 const sequelize = db.sequelize;
 const { validationResult } = require("express-validator");
 
+
 module.exports = {
 
 	login(req, res){
+		console.log(req.body);
 		let errors = validationResult(req);
 	    if (!errors.isEmpty()) {
 	      return res.json({
@@ -13,6 +15,8 @@ module.exports = {
 	        status: 300
 	      });
 	    }
+
+		console.log(req.body);
 
 		let admin = db.Users.findAll({
 			where: {
@@ -22,18 +26,27 @@ module.exports = {
 		})
 		.then((admin)=>{
 			return admin[0];
-		});
+		}).catch(e => {
+			console.log(e);
+		})
+
+			console.log(admin);
 
 		Promise.all([admin])
 		.then(([adminData]) => {
 			if (adminData) {
-				if (req.body.dni == adminData.dni) {
-					let token = token.createToken(adminData);
 
-					return res.json({
+				console.log(adminData);
+
+				if (req.body.dni == adminData.dni) {
+					let token = jwt.createToken(adminData);
+
+					console.log(token);
+
+					return res.send({
 						token: token, 
-						name: adminData.nombre,
-						data: adminData,
+						/* name: adminData.nombre,
+						data: adminData, */
 						status:200
 					});
 				}

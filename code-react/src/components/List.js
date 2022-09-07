@@ -9,9 +9,21 @@ function List() {
     let params = useParams();
     const navigate = useNavigate();
 
+
+    const registers = async () => {
+        let data = await listProcess(localStorage.getItem('token'));
+        if (data.status === 200) {
+            adminUsers(data.data);
+            return true;
+        } else {
+            localStorage.clear();
+            return false
+        }
+    }
+
     //component did mount
     useEffect(() => {
-        if(!window.sessionStorage.getItem('name') || window.sessionStorage.getItem('name')==='undefined')
+        if(!localStorage.getItem('token'))
         {
             navigate('/login');
         }
@@ -20,7 +32,7 @@ function List() {
             if (registers())
             {
                 let titulo = document.getElementById("titulo");
-                titulo.innerHTML = window.sessionStorage.getItem('name');
+                titulo.innerHTML = localStorage.getItem('name');
             }
             else
             {
@@ -29,16 +41,7 @@ function List() {
         }
     }, [params.id]);
 
-    const registers = async () => {
-        let data = await listProcess(window.sessionStorage.getItem('token'));
-        if (data.status === 200) {
-            adminUsers(data.data);
-            return true;
-        } else {
-            window.sessionStorage.clear();
-            return false
-        }
-    }
+    
 
     return(
         <div className='tabla'>
