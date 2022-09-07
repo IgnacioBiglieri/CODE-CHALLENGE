@@ -13,7 +13,7 @@ function Login() {
         try {
           await loginProcess({email, dni})
           .then((respuesta) => {
-                if(respuesta.data.status == 200){
+                if(respuesta.data.status === 200){
                     window.sessionStorage.setItem("token", respuesta.data.token);
                     window.sessionStorage.setItem("name", respuesta.data.name);
                     navigate("/list");

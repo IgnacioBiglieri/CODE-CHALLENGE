@@ -27,7 +27,7 @@ function List() {
                 navigate('/login');
             }
         }
-    }, [barra.id]);
+    }, [params.id]);
 
     const registers = async () => {
         let data = await listProcess(window.sessionStorage.getItem('token'));
