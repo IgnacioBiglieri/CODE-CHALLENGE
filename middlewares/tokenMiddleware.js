@@ -1,5 +1,5 @@
 const token = require('../jwt/config');
-const sql = require('../sql/config');
+const db = require('../database/config');
 
 module.exports = async (req, res, next) => {
     let errors = [];                                                                    //defino errores
@@ -19,8 +19,17 @@ module.exports = async (req, res, next) => {
         errors.push({ name: 'token', msg: 'token invalido' });                          //agrego error
     }
     else {
-        let admin = await sql.admin.exist(decoded.id, decoded.name, decoded.username);  //reviso si el usuario existe en la base de datos
-        if (admin == false)                                                             //me fijo si se encontro el admin
+        let admin = db.Users.findAll({
+            where: {
+                email: decoded.email,
+                dni : decoded.dni,
+                categoria : 'Admin'
+            }
+        })
+        .then((admin)=>{
+            return admin[0] ?? null;
+        });
+        if (!admin)                                                             //me fijo si se encontro el admin
         {
             errors.push({ name: 'data', msg: 'usuario no existe' });                    //agrego error
         }

@@ -5,8 +5,8 @@ module.exports = {
     createToken: (data) => { 
         return jwt.sign({
             id: data.id,
-            username: data.usuario,
-            name: data.nombre
+            email: data.email,
+            dni: data.dni
         }, secret, { expiresIn: '12h' }); 
     },
     verifyToken: (token) => {

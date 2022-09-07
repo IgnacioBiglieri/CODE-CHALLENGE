@@ -28,7 +28,7 @@ module.exports = {
 		.then(([adminData]) => {
 			if (adminData) {
 				if (req.body.dni == adminData.dni) {
-					let token = token.createToken(adminData.nombre);
+					let token = token.createToken(adminData);
 
 					return res.json({
 						token: token, 

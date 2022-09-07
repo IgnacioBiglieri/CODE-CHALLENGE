@@ -17,7 +17,7 @@ function List() {
         }
         else
         {
-            if (consultar())
+            if (registers())
             {
                 let titulo = document.getElementById("titulo");
                 titulo.innerHTML = window.sessionStorage.getItem('name');
