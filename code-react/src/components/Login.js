@@ -9,17 +9,20 @@ import './Login.css';
 function Login() {
 
     const handleLogin = async (e) => {
-        console.log(email);
-        console.log(dni);
         e.preventDefault();
         try {
           await loginProcess({email, dni})
-          .then(() => {
-              navigate("/list");
-              window.location.reload();
+          .then((respuesta) => {
+                if(respuesta.data.status == 200){
+                    window.sessionStorage.setItem("token", respuesta.data.token);
+                    window.sessionStorage.setItem("name", respuesta.data.name);
+                    navigate("/list");
+                } else {
+                    console.log(respuesta.data.error);
+                }
             },
             (error) => {
-              console.log(error);
+                console.log(error);
             }
           );
         } catch (err) {
