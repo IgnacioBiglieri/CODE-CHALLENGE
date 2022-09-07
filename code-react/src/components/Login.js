@@ -25,12 +25,6 @@ function Login() {
         } catch (err) {
           console.log(err);
         }
-        /* fetch("http://localhost:8000/admins/login", {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        }) */
       };
 
 
@@ -52,6 +46,7 @@ function Login() {
                             type="text"
                             required="required"
                             placeholder="E-mail"
+                            id="email"
                             onChange={(e) => setEmail(e.target.value)}
 
                         />
@@ -61,6 +56,7 @@ function Login() {
                             type="number"
                             required="required"
                             placeholder="DNI"
+                            id="dni"
                             onChange={(e) => setDni(e.target.value)}
 
                         />

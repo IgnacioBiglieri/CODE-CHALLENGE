@@ -1,8 +1,10 @@
+const jwt = require('jsonwebtoken')
 const db = require('../database/models');
 const sequelize = db.sequelize;
 const { validationResult } = require("express-validator");
 
 module.exports = {
+
 	login(req, res){
 		let errors = validationResult(req);
 	    if (!errors.isEmpty()) {
@@ -26,23 +28,20 @@ module.exports = {
 		.then(([adminData]) => {
 			if (adminData) {
 				if (req.body.dni == adminData.dni) {
+					let token = token.createToken(adminData.nombre);
+
 					return res.json({
+						token: token, 
+						name: adminData.nombre,
 						data: adminData,
 						status:200
 					});
-				} else {
-					return res.json({
-						data: {error : "El DNI no es válido"},
-						status:401
-					});
-					;
 				}
-			} else {
-				return res.json({
-					data: {error : "No se encuentra el E-mail"},
-					status:401
-				});
-			}
+			} 
+			return res.json({
+				data: {error : "Email o DNI no válido"},
+				status:401
+			});
 		})
 	},
 }
