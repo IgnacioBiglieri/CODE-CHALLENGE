@@ -1,4 +1,4 @@
-const jwt = require('jsonwebtoken')
+const token = require('../jwt/config');
 const db = require('../database/models');
 const sequelize = db.sequelize;
 const { validationResult } = require("express-validator");

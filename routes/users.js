@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var userController = require('../controllers/userController')
-var tokenMiddleware = require('../middleware/tokenMiddleware')
+var tokenMiddleware = require('../middlewares/tokenMiddleware')
 
 // Lista de usuarios registrados
 router.get('/list', tokenMiddleware, userController.list);

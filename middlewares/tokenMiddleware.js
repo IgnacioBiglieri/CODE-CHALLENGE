@@ -1,5 +1,5 @@
 const token = require('../jwt/config');
-const db = require('../database/config');
+const db = require('../database/models');
 
 module.exports = async (req, res, next) => {
     let errors = [];                                                                    //defino errores
