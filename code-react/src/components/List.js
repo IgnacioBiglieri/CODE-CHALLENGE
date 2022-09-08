@@ -9,7 +9,6 @@ function List() {
     let params = useParams();
     const navigate = useNavigate();
 
-
     const registers = async () => {
         let data = await listProcess(localStorage.getItem('token'));
         if (data.status === 200) {
@@ -21,7 +20,7 @@ function List() {
         }
     }
 
-    //component did mount
+
     useEffect(() => {
         if(!localStorage.getItem('token'))
         {
@@ -29,17 +28,12 @@ function List() {
         }
         else
         {
-            if (registers())
-            {
-                let titulo = document.getElementById("titulo");
-                titulo.innerHTML = localStorage.getItem('name');
-            }
-            else
+            if (!registers())
             {
                 navigate('/login');
             }
         }
-    }, [params.id]);
+    }, [params.id, users]);
 
     
 

@@ -9,7 +9,7 @@ module.exports = {
 			return usuario;
 		});
 
-		Promise.all([crearUsuario]).then(([crearUsuario])=>{
+		return Promise.all([crearUsuario]).then(([crearUsuario])=>{
 			res.json({
 	            data: crearUsuario,
 	            status: 200
@@ -17,26 +17,29 @@ module.exports = {
 		})
 	},
 	list:(req, res) => {
-		if(!req.errors.length){
+		if(req.errors.length == 0){
 			let usuarios = db.Users.findAll({where: {
 				categoria: {
-					[Op.ne]:'Admin'}
+					[Op.ne]: 'Admin'
 				}
-			}).then((usuarios)=>{
+			}}).then((usuarios)=>{
 				return usuarios;
 			});
-
-	        Promise.all([usuarios]).then(([usuarios]) => {
+			
+	       return Promise.all([usuarios]).then(([usuarios]) => {
 	        	return res.json({
 		            data: usuarios,
 		            status: 200
 		        })
 	        })
-		}
 
+			
+		}
 		return res.json({
             data: {errors : 'No tiene permitido ingresar'},
-            status: 404,
+            status: 404
         })
+
+		
 	},
 }

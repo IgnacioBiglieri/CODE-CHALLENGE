@@ -10,18 +10,21 @@ function Login() {
 
     const navigate = useNavigate()
 
+    const [error, setError] = useState(undefined);
+
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
             const respuesta = await loginProcess({email, dni})
+
           
-                if(respuesta.data.status === 200){
-                    localStorage.setItem("token", respuesta.data.token);
-                    localStorage.setItem("name", respuesta.data.name);
+                if(respuesta.status === 200){
+                    localStorage.setItem("token", respuesta.token);
+                    localStorage.setItem("name", respuesta.name);
                     console.log(navigate);
                     navigate("/list");
                 } else {
-                    console.log('error')
+                        setError(respuesta.data.error);
                     } 
             }
 
@@ -68,6 +71,9 @@ function Login() {
                         <button type="submit" onSubmit={handleLogin}
                             >Ingresar</button>
                     </div>
+                    {error && (
+                        <p>{error}</p>
+                    )}
                 </form>
                 <div>
                     <input type="checkbox" id="remember" />

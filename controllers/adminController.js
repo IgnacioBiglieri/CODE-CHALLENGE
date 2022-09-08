@@ -7,7 +7,6 @@ const { validationResult } = require("express-validator");
 module.exports = {
 
 	login(req, res){
-		console.log(req.body);
 		let errors = validationResult(req);
 	    if (!errors.isEmpty()) {
 	      return res.json({
@@ -16,7 +15,6 @@ module.exports = {
 	      });
 	    }
 
-		console.log(req.body);
 
 		let admin = db.Users.findAll({
 			where: {
@@ -30,23 +28,20 @@ module.exports = {
 			console.log(e);
 		})
 
-			console.log(admin);
 
 		Promise.all([admin])
 		.then(([adminData]) => {
 			if (adminData) {
 
-				console.log(adminData);
 
 				if (req.body.dni == adminData.dni) {
 					let token = jwt.createToken(adminData);
 
-					console.log(token);
 
 					return res.send({
 						token: token, 
-						/* name: adminData.nombre,
-						data: adminData, */
+						name: adminData.nombre,
+						data: adminData,
 						status:200
 					});
 				}

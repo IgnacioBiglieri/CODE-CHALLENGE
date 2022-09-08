@@ -2,21 +2,23 @@ const token = require('../jwt/config');
 const db = require('../database/models');
 
 module.exports = async (req, res, next) => {
-    let errors = [];                                                                    //defino errores
+    let errors = [];  
+    
 
-    const permiso = req.get('authorization');                                           //obtengo la cabezera con el token
-    let tokenAdmin = '';                                                                //defino token como variable vacia
+    const permiso = req.get('authorization');                         
+    let tokenAdmin = '';         
 
-    if (permiso && permiso.startsWith('Bearer'))                                        //me fijo si usa el standar del token
+    if (permiso && permiso.startsWith('Bearer')) 
     {
-        tokenAdmin = permiso.substring(7);                                              //obtengo el token
+        tokenAdmin = permiso.substring(7);
     }
 
-    let decoded = token.verifyToken(tokenAdmin);                                        //decodifico el token
 
-    if (decoded == false)                                                               //verifico si coincidio el secret
+    let decoded = token.verifyToken(tokenAdmin); 
+
+    if (decoded == false) 
     {
-        errors.push({ name: 'token', msg: 'token invalido' });                          //agrego error
+        errors.push({ name: 'token', msg: 'token invalido' });
     }
     else {
         let admin = db.Users.findAll({
@@ -29,11 +31,13 @@ module.exports = async (req, res, next) => {
         .then((admin)=>{
             return admin[0] ?? null;
         });
-        if (!admin)                                                             //me fijo si se encontro el admin
+        if (!admin)
         {
-            errors.push({ name: 'data', msg: 'usuario no existe' });                    //agrego error
+            errors.push({ name: 'data', msg: 'usuario no existe' });
         }
+        
     }
-    req.errors = errors;                                                                //agrego los errores al request
+
+    req.errors = errors; 
     next()
 }

@@ -3,16 +3,14 @@ import './RowUser.css';
 
 function RowUser(userData) {
     return (
-        <thead className='data'>
-            <tr className='headList'>
-                <td className="users">{userData.nombre}</td>
-                <td className="users">{userData.apellido}</td>
-                <td className="users">{userData.dni}</td>
-                <td className="users">{userData.telefono}</td>
-                <td className="users">{userData.email}</td>
-                <td className="users">{userData.domicilio}</td>
-            </tr>
-        </thead>
+        <tr className='headList'>
+            <td className="users">{userData.nombre}</td>
+            <td className="users">{userData.apellido}</td>
+            <td className="users">{userData.dni}</td>
+            <td className="users">{userData.telefono}</td>
+            <td className="users">{userData.email}</td>
+            <td className="users">{userData.domicilio}</td>
+        </tr>
     )
 }
 

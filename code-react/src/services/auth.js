@@ -1,38 +1,33 @@
 import axios from 'axios'
 
-const process = async (link,data,token) => {
+const process = async (metodo,link,data,token) => {
     if (!token)
     {
         token='0'
     }
     let config = {
-        /* method: "POST", */
+        method: metodo,
         headers: {
           "Content-Type": "application/json",
           'Authorization': `Bearer ${token}`,
         },
         mode: "cors",
       };
-      console.log(data)
-      /* if (data !== "") {
-        body = { ...body, body: data };
-      } */
-       try {
-        return await axios.post(`http://127.0.0.1:8000/` + link, data, config)
+
+      if (data !== "") {
+        config = { ...config, body: JSON.stringify(data) };
       }
-      catch(error){
-        console.error("Error:", error)
-      }
-      /* return await fetch(`http://127.0.0.1:8000/` + link, { ...body })
+
+      return await fetch(`http://127.0.0.1:8000/` + link, { ...config })
         .then(res => res.json())
-        .catch(error => console.error("Error:", error)); */
+        .catch(error => console.error("Error:", error));
 } 
 export const listProcess = async (token) => {
   let data = '';
-  return await process('users/list', data, token);
+  return await process('GET','users/list', data, token);
 }
 
 export const loginProcess = async (data) => {
-  return await process('admins/login', data);
+  return await process('POST','admins/login', data);
 }
 
